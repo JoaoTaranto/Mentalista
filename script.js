@@ -1,15 +1,27 @@
+var numeroSecreto = parseInt(Math.random() * 11);
 var elementoResultado = document.getElementById("resultado");
+var tentativas = 3
 
 function Chutar() {
-  var numeroSecreto = parseInt(Math.random() * 11);
   var chute = parseInt(document.getElementById("valor").value);
   if (chute == numeroSecreto) {
     elementoResultado.innerHTML = "Você acertou! :D";
+    location.reload()
   } else if (chute > 10 || chute < 0) {
     elementoResultado.innerHTML =
       "O número chutado é maior/menor que 10! Chute um número de 0-10.";
-  } else {
+  } else if (numeroSecreto > 10){ 
+      tentativas--;
+      elementoResultado.innerHTML =
+      "Você errou :c O número secreto é menor.";
+  } else if (numeroSecreto < 10) {
+    tentativas--;
     elementoResultado.innerHTML =
-      "Você errou :c O número secreto era " + numeroSecreto;
+    "Você errou :c O número secreto é maior.";
+  } 
+
+  if (tentativas == 0) {
+      elementoResultado.innerHTML = "Você perdeu suas tentativas! O número secreto era " + numeroSecreto;
+      location.reload()
   }
 }
