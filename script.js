@@ -22,6 +22,6 @@ function Chutar() {
 
   if (tentativas == 0) {
       elementoResultado.innerHTML = "Você perdeu suas tentativas! O número secreto era " + numeroSecreto;
-      setTimeout(function(){location.reload()}, 1700);
+      setTimeout(function(){location.reload()}, 2000);
   }
 }
